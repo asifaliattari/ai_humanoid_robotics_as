@@ -1,0 +1,8 @@
+{
+  "label": "Meta",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "description": "How to use this book, prerequisites, and contribution guidelines"
+  }
+}

@@ -7,8 +7,8 @@ const githubUsername = 'asifaliattari';
 const repoName = 'ai_humanoid_robotics_as';
 
 const config: Config = {
-  title: 'Docusaurus Technical Book',
-  tagline: 'A technical book built with Docusaurus, Spec-Kit Plus, and Claude Code',
+  title: 'Physical AI & Humanoid Robotics',
+  tagline: 'An AI-native textbook for building autonomous humanoid robots with ROS 2, Isaac, and Vision-Language-Action systems',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -58,19 +58,70 @@ const config: Config = {
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Technical Book',
+      title: 'Physical AI & Humanoid Robotics',
       logo: {
-        alt: 'Book Logo',
+        alt: 'Robot Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'bookSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Book',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'doc',
+          docId: 'foundations/index',
+          position: 'left',
+          label: 'Foundations',
+        },
+        {
+          type: 'dropdown',
+          label: 'Modules',
+          position: 'left',
+          items: [
+            {
+              type: 'doc',
+              docId: 'modules/ros2/index',
+              label: 'Module 1: ROS 2',
+            },
+            {
+              type: 'doc',
+              docId: 'modules/digital-twin/index',
+              label: 'Module 2: Digital Twin',
+            },
+            {
+              type: 'doc',
+              docId: 'modules/isaac/index',
+              label: 'Module 3: Isaac',
+            },
+            {
+              type: 'doc',
+              docId: 'modules/vla/index',
+              label: 'Module 4: VLA',
+            },
+          ],
+        },
+        {
+          type: 'doc',
+          docId: 'hardware/index',
+          position: 'left',
+          label: 'Hardware',
+        },
+        {
+          type: 'doc',
+          docId: 'capstone/index',
+          position: 'left',
+          label: 'Capstone',
+        },
+        {
+          type: 'doc',
+          docId: 'ai-features/index',
+          position: 'left',
+          label: 'AI Features',
+        },
+        {to: '/blog', label: 'Blog', position: 'right'},
         {
           href: `https://github.com/${githubUsername}/${repoName}`,
           label: 'GitHub',
@@ -104,7 +155,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Technical Book. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics. Built with Docusaurus and Claude Code.`,
     },
     prism: {
       theme: prismThemes.github,

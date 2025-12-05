@@ -1,0 +1,8 @@
+{
+  "label": "Core Modules",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Four core modules: ROS 2, Digital Twin, NVIDIA Isaac, and Vision-Language-Action systems"
+  }
+}

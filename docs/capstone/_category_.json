@@ -1,0 +1,8 @@
+{
+  "label": "Capstone: Autonomous Humanoid",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Integrate all four modules into a complete autonomous humanoid system"
+  }
+}

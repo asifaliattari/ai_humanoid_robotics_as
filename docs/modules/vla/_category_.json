@@ -1,0 +1,8 @@
+{
+  "label": "Module 4: Vision-Language-Action",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Enable humanoid robots to understand voice commands and plan actions using LLMs"
+  }
+}

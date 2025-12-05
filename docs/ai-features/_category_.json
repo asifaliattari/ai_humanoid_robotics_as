@@ -1,0 +1,8 @@
+{
+  "label": "AI-Native Features",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "RAG chatbot, personalization engine, translation, and Claude subagents"
+  }
+}
