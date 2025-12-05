@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Physical AI Book - Translation API
+  version: 1.0.0
+
+paths:
+  /translation/translate:
+    post:
+      summary: Translate section to target language
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - section_id
+                - target_language
+              properties:
+                section_id:
+                  type: string
+                target_language:
+                  type: string
+                  enum: [ur] # Urdu for now, expand later
+                user_id:
+                  type: string
+                  format: uuid
+                  description: For caching preferences
+      responses:
+        '200':
+          description: Translated content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  translated_content:
+                    type: string
+                    description: Markdown with translated text, code blocks unchanged
+                  cache_hit:
+                    type: boolean
+                    description: Whether result was cached
+                  translation_time_ms:
+                    type: integer
+
+  /translation/supported-languages:
+    get:
+      summary: Get supported languages
+      responses:
+        '200':
+          description: List of supported language codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  languages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: "ur"
+                        name:
+                          type: string
+                          example: "Urdu"

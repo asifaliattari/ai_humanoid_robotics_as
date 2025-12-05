@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: Physical AI Book - RAG Chatbot API
+  version: 1.0.0
+  description: Retrieval-Augmented Generation API for book Q&A
+
+servers:
+  - url: https://api.physical-ai-book.com/v1
+    description: Production backend
+
+paths:
+  /rag/book-qa:
+    post:
+      summary: Book-wide Q&A
+      description: Answer questions using entire book content via vector search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - query
+              properties:
+                query:
+                  type: string
+                  example: "How do I integrate LLMs with ROS 2 actions?"
+                user_id:
+                  type: string
+                  format: uuid
+                  description: Optional for personalized results
+                filters:
+                  type: object
+                  properties:
+                    modules:
+                      type: array
+                      items:
+                        type: string
+                      example: ["module-1-ros2", "module-4-vla"]
+                    difficulty:
+                      type: string
+                      enum: [beginner, intermediate, advanced]
+                    requires_hardware:
+                      type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                    description: LLM-generated answer
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        section_id:
+                          type: string
+                        title:
+                          type: string
+                        relevance_score:
+                          type: number
+                        excerpt:
+                          type: string
+                  query_id:
+                    type: string
+                    format: uuid
+
+  /rag/selection-qa:
+    post:
+      summary: Selection-based Q&A
+      description: Answer questions about user-highlighted text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - selected_text
+                - query
+              properties:
+                selected_text:
+                  type: string
+                  description: Text highlighted by user
+                query:
+                  type: string
+                  example: "Can you explain this in simpler terms?"
+                user_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                  query_id:
+                    type: string
+                    format: uuid

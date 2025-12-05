@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: Physical AI Book - Personalization API
+  version: 1.0.0
+
+paths:
+  /personalization/profile:
+    get:
+      summary: Get user profile
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+
+    put:
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+      responses:
+        '200':
+          description: Profile updated
+
+  /personalization/adapt-content:
+    post:
+      summary: Get personalized content version
+      description: Returns adapted content based on user's hardware and experience
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - section_id
+                - user_id
+              properties:
+                section_id:
+                  type: string
+                user_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Personalized content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  original_content:
+                    type: string
+                    description: Markdown content
+                  personalized_blocks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        insert_after:
+                          type: string
+                          description: Heading or marker to insert after
+                        content:
+                          type: string
+                          description: Personalized markdown block
+
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        has_rtx_gpu:
+          type: boolean
+        has_jetson:
+          type: boolean
+        jetson_model:
+          type: string
+          enum: [orin-nano, orin-nx, null]
+        robot_type:
+          type: string
+          enum: [none, proxy, go2, op3, g1]
+        ros2_experience:
+          type: string
+          enum: [none, beginner, intermediate, advanced]
+        ml_experience:
+          type: string
+          enum: [none, beginner, intermediate, advanced]
+        robotics_experience:
+          type: string
+          enum: [none, beginner, intermediate, advanced]
