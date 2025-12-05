@@ -2,8 +2,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This will be updated once we know the GitHub username
-const githubUsername = 'YOUR_USERNAME';
+// GitHub configuration
+const githubUsername = 'asifaliattari';
 const repoName = 'ai_humanoid_robotics_as';
 
 const config: Config = {
