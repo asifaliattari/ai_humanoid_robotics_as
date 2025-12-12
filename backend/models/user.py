@@ -3,7 +3,6 @@ User profile model matching data-model.md specification
 Stores hardware inventory, experience levels, and preferences
 """
 from sqlalchemy import Column, String, Boolean, DateTime, Enum as SQLEnum
-from sqlalchemy.dialects.postgresql import UUID
 import uuid
 from datetime import datetime
 import enum
@@ -56,8 +55,8 @@ class UserProfile(Base):
     """User profile with hardware inventory and experience levels"""
     __tablename__ = "user_profiles"
 
-    # Primary key
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    # Primary key - using String for SQLite compatibility
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     email = Column(String(255), unique=True, nullable=False, index=True)
 
     # Timestamps
