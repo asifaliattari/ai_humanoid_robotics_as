@@ -45,7 +45,7 @@ export default function Login(): JSX.Element {
 
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
-          window.location.href = '/docs/intro';
+          window.location.href = '/ai_humanoid_robotics_as/docs/intro';
         }, 1500);
       } else {
         // Register
@@ -185,7 +185,7 @@ export default function Login(): JSX.Element {
           </div>
 
           <div className="guest-option">
-            <Link to="../docs/intro">Continue as Guest &rarr;</Link>
+            <Link to="/ai_humanoid_robotics_as/docs/intro">Continue as Guest &rarr;</Link>
           </div>
         </div>
 
