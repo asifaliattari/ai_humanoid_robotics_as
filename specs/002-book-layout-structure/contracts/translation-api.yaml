@@ -21,7 +21,7 @@ paths:
                   type: string
                 target_language:
                   type: string
-                  enum: [ur] # Urdu for now, expand later
+                  enum: [ur, fr, ar, de] # Urdu, French, Arabic, German (English is source)
                 user_id:
                   type: string
                   format: uuid
@@ -61,7 +61,30 @@ paths:
                       properties:
                         code:
                           type: string
-                          example: "ur"
+                          example: "en"
+                          description: "Language code (ISO 639-1)"
                         name:
                           type: string
-                          example: "Urdu"
+                          example: "English"
+                          description: "Full language name"
+                        direction:
+                          type: string
+                          enum: [ltr, rtl]
+                          example: "ltr"
+                          description: "Text direction (left-to-right or right-to-left)"
+                    example:
+                      - code: "en"
+                        name: "English"
+                        direction: "ltr"
+                      - code: "ur"
+                        name: "Urdu"
+                        direction: "rtl"
+                      - code: "fr"
+                        name: "French"
+                        direction: "ltr"
+                      - code: "ar"
+                        name: "Arabic"
+                        direction: "rtl"
+                      - code: "de"
+                        name: "German"
+                        direction: "ltr"

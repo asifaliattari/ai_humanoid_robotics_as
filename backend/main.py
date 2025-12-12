@@ -12,10 +12,11 @@ from contextlib import asynccontextmanager
 
 from config import settings
 
-# Import routers (will create these files next)
-# from api.rag import book_qa, selection_qa
-# from api.personalization import user_profile, content_adapter
-# from api.translation import translate
+# Import routers
+from api.rag import book_qa_router, selection_qa_router
+from api.personalization import user_profile_router, content_adapter_router
+from api.translation import translate_router
+from api.auth import auth_router
 
 # Configure logging
 logging.basicConfig(
@@ -107,6 +108,11 @@ async def root():
         "docs": "/docs" if settings.debug else "Documentation disabled in production",
         "endpoints": {
             "health": "/health",
+            "auth": {
+                "register": "/api/auth/register",
+                "login": "/api/auth/login-json",
+                "me": "/api/auth/me",
+            },
             "rag": {
                 "book_qa": "/api/rag/book-qa",
                 "selection_qa": "/api/rag/selection-qa",
@@ -141,12 +147,13 @@ async def internal_error_handler(request: Request, exc):
     )
 
 
-# Include routers (uncomment after creating router files)
-# app.include_router(book_qa.router, prefix="/api/rag", tags=["RAG"])
-# app.include_router(selection_qa.router, prefix="/api/rag", tags=["RAG"])
-# app.include_router(user_profile.router, prefix="/api/personalization", tags=["Personalization"])
-# app.include_router(content_adapter.router, prefix="/api/personalization", tags=["Personalization"])
-# app.include_router(translate.router, prefix="/api/translation", tags=["Translation"])
+# Include routers
+app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
+app.include_router(book_qa_router, prefix="/api/rag", tags=["RAG"])
+app.include_router(selection_qa_router, prefix="/api/rag", tags=["RAG"])
+app.include_router(user_profile_router, prefix="/api/personalization", tags=["Personalization"])
+app.include_router(content_adapter_router, prefix="/api/personalization", tags=["Personalization"])
+app.include_router(translate_router, prefix="/api/translation", tags=["Translation"])
 
 
 if __name__ == "__main__":

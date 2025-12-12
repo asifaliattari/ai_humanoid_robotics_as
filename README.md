@@ -1,12 +1,30 @@
-# Docusaurus Technical Book
+# Physical AI & Humanoid Robotics - AI-Native Textbook
 
-A technical book built with **Docusaurus v3**, **Spec-Kit Plus**, and **Claude Code**, demonstrating spec-driven development and automated deployment to GitHub Pages.
+An interactive AI-native textbook built with **Docusaurus v3**, **FastAPI**, **RAG chatbot**, **multi-language translation**, and **personalized learning**. Powered by **OpenAI GPT-4**, **Qdrant**, and **Neon Postgres**.
 
-## Project Overview
+## 🌟 Features
 
-This project creates a technical book that follows rigorous standards for:
+### AI-Native Learning Experience
 
-- **Spec-driven writing** - No content without specifications
+- **🤖 RAG Chatbot**: Ask questions about the entire book or selected text
+  - Book-wide semantic search powered by Qdrant vector database
+  - Selection-based Q&A for highlighted text
+  - Answers with cited sources
+
+- **🌐 Multi-Language Translation**: Instant translation to 5 languages
+  - English, Urdu (اردو), French (Français), Arabic (العربية), German (Deutsch)
+  - RTL support for Urdu and Arabic
+  - Smart caching reduces costs by 80-90%
+  - Code blocks and technical terms preserved
+
+- **⚙️ Personalized Learning**: Content adapts to your setup
+  - Hardware-based: Cloud GPU alternatives, Jetson optimizations
+  - Experience-based: Beginner tutorials, expert research papers
+  - Robot-specific: Integration guides for your hardware
+
+### Technical Excellence
+
+- **Spec-driven development** - No content without specifications
 - **Technical accuracy** - All content based on official documentation
 - **Beginner-friendly style** - Clear, accessible instruction
 - **Reproducibility** - All tutorials and commands are verified
@@ -14,27 +32,53 @@ This project creates a technical book that follows rigorous standards for:
 
 ## Quick Start
 
-### Prerequisites
-
-- **Node.js** 18.0 or higher
-- **npm** (comes with Node.js)
-- **Git** for version control
-
-### Installation
+### 5-Minute Setup with Docker
 
 ```bash
-# Clone the repository
+# 1. Clone repository
 git clone https://github.com/YOUR_USERNAME/ai_humanoid_robotics_as.git
 cd ai_humanoid_robotics_as
 
-# Install dependencies
-npm install
+# 2. Configure backend (get free API keys - see SETUP.md)
+cd backend
+cp .env.example .env
+# Edit .env with your API keys
 
-# Start development server
-npm start
+# 3. Start everything with Docker Compose
+cd ..
+docker-compose up -d
+
+# ✅ Frontend: http://localhost:3000
+# ✅ Backend API: http://localhost:8000/docs
 ```
 
-The site will open at `http://localhost:3000`.
+### Manual Setup
+
+**Prerequisites:**
+- Node.js 18+ and npm
+- Python 3.11+
+- API keys (Qdrant, Neon, OpenAI) - See [SETUP.md](SETUP.md)
+
+**Frontend:**
+```bash
+npm install
+npm start
+# Opens at http://localhost:3000
+```
+
+**Backend:**
+```bash
+cd backend
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with API keys
+alembic upgrade head
+python -m scripts.generate_embeddings
+uvicorn main:app --reload
+# API at http://localhost:8000
+```
+
+📘 **Detailed setup guide**: [SETUP.md](SETUP.md)
 
 ### Build for Production
 
@@ -52,40 +96,69 @@ The production build will be in the `build/` directory.
 
 ```
 ai_humanoid_robotics_as/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions deployment workflow
-├── .specify/
-│   ├── memory/
-│   │   └── constitution.md     # Project constitution (principles & standards)
-│   └── templates/              # Spec-Kit Plus templates
-├── blog/                       # Blog posts
-│   ├── authors.yml
-│   └── 2025-12-05-welcome.md
-├── docs/                       # Documentation pages
-│   ├── intro.md
-│   └── tutorial-basics/
-│       └── tutorial-intro.md
-├── history/
-│   └── prompts/                # Prompt History Records (PHRs)
-│       └── constitution/
-├── specs/                      # Feature specifications
-│   └── 001-initial-setup/
-│       └── spec.md
+├── backend/                    # FastAPI backend
+│   ├── alembic/                # Database migrations
+│   │   ├── versions/           # Migration scripts
+│   │   └── env.py
+│   ├── api/                    # API endpoints
+│   │   ├── rag/                # RAG chatbot
+│   │   │   ├── book_qa.py      # Book-wide Q&A
+│   │   │   └── selection_qa.py # Selection-based Q&A
+│   │   ├── personalization/    # Content adaptation
+│   │   │   ├── user_profile.py
+│   │   │   └── content_adapter.py
+│   │   └── translation/        # Multi-language
+│   │       └── translate.py
+│   ├── models/                 # SQLAlchemy models
+│   │   ├── user.py             # User profiles
+│   │   └── content.py          # Progress, logs, cache
+│   ├── services/               # Business logic
+│   │   ├── qdrant_service.py   # Vector database
+│   │   └── embedding_service.py # OpenAI embeddings
+│   ├── scripts/
+│   │   └── generate_embeddings.py # Embed docs
+│   ├── main.py                 # FastAPI app
+│   ├── config.py               # Settings
+│   ├── requirements.txt        # Python deps
+│   ├── .env.example            # Config template
+│   ├── Dockerfile              # Container
+│   └── README.md               # Backend docs
+├── docs/                       # Book content
+│   ├── foundations/            # Physical AI basics
+│   ├── modules/                # 4 core modules
+│   │   ├── ros2/               # Module 1: ROS 2
+│   │   ├── digital-twin/       # Module 2: Simulation
+│   │   ├── isaac/              # Module 3: NVIDIA Isaac
+│   │   └── vla/                # Module 4: VLA systems
+│   ├── hardware/               # Hardware guides
+│   ├── capstone/               # Integration project
+│   ├── ai-features/            # AI features docs
+│   └── meta/                   # How to use
 ├── src/
 │   ├── components/             # React components
+│   │   ├── TranslationToggle.tsx # 5-language selector
+│   │   ├── PersonalizeButton.tsx # Content adaptation
+│   │   ├── RAGChatWidget.tsx     # Floating chatbot
+│   │   ├── BookPageWrapper.tsx   # Wrapper component
+│   │   └── index.ts
 │   ├── css/
-│   │   └── custom.css          # Custom styles
+│   │   └── custom.css
 │   └── pages/
-│       ├── index.tsx           # Homepage
-│       └── index.module.css
-├── static/
-│   └── img/                    # Static images
-│       └── logo.svg
-├── docusaurus.config.ts        # Docusaurus configuration
-├── sidebars.ts                 # Sidebar configuration
-├── package.json                # Dependencies (locked versions)
-├── tsconfig.json               # TypeScript configuration
+│       └── index.tsx           # Homepage
+├── specs/                      # Feature specifications
+│   └── 002-book-layout-structure/
+│       ├── spec.md
+│       ├── plan.md
+│       ├── tasks.md
+│       └── contracts/          # API specs
+├── .specify/
+│   ├── memory/
+│   │   └── constitution.md
+│   └── templates/
+├── docker-compose.yml          # Local development
+├── docusaurus.config.ts        # Docusaurus config
+├── sidebars.ts                 # Sidebar config
+├── SETUP.md                    # Detailed setup guide
 └── README.md                   # This file
 ```
 

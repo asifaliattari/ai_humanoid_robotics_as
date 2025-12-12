@@ -19,6 +19,11 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
+# Import all models to ensure they are registered with Base
+from .user import UserProfile  # noqa: F401, E402
+from .auth import User  # noqa: F401, E402
+
+
 def get_db():
     """Dependency for FastAPI to get database session"""
     db = SessionLocal()

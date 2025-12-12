@@ -1,6 +1,14 @@
+// {
+//   "extends": "@docusaurus/tsconfig",
+//   "compilerOptions": {
+//     "baseUrl": "."
+//   }
+// }
+
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": "."
   }
 }
+

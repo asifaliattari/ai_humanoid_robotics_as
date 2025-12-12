@@ -5,7 +5,7 @@ Loads environment variables and provides typed config objects
 import json
 from typing import List
 from pydantic_settings import BaseSettings
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 
 
 class Settings(BaseSettings):
@@ -21,9 +21,9 @@ class Settings(BaseSettings):
     host: str = Field(default="0.0.0.0", env="HOST")
     port: int = Field(default=8000, env="PORT")
 
-    # Qdrant Vector Database
-    qdrant_url: str = Field(..., env="QDRANT_URL")
-    qdrant_api_key: str = Field(..., env="QDRANT_API_KEY")
+    # Qdrant Vector Database (optional for basic functionality)
+    qdrant_url: str = Field(default="http://localhost:6333", env="QDRANT_URL")
+    qdrant_api_key: str = Field(default="", env="QDRANT_API_KEY")
     qdrant_collection_name: str = Field(default="physical_ai_book", env="QDRANT_COLLECTION_NAME")
 
     # Neon Serverless Postgres
@@ -31,23 +31,24 @@ class Settings(BaseSettings):
     database_pool_size: int = Field(default=5, env="DATABASE_POOL_SIZE")
     database_max_overflow: int = Field(default=10, env="DATABASE_MAX_OVERFLOW")
 
-    # OpenAI API
-    openai_api_key: str = Field(..., env="OPENAI_API_KEY")
+    # OpenAI API (optional if RAG features not used)
+    openai_api_key: str = Field(default="", env="OPENAI_API_KEY")
     openai_embedding_model: str = Field(default="text-embedding-3-small", env="OPENAI_EMBEDDING_MODEL")
     openai_chat_model: str = Field(default="gpt-4-turbo-preview", env="OPENAI_CHAT_MODEL")
     openai_max_tokens: int = Field(default=2048, env="OPENAI_MAX_TOKENS")
 
-    # Better-Auth
-    auth_secret: str = Field(..., env="AUTH_SECRET")
+    # Better-Auth (optional for now)
+    auth_secret: str = Field(default="your_auth_secret_key_min_32_characters_long", env="AUTH_SECRET")
     auth_url: str = Field(default="http://localhost:8000", env="AUTH_URL")
     jwt_algorithm: str = Field(default="HS256", env="JWT_ALGORITHM")
     access_token_expire_minutes: int = Field(default=30, env="ACCESS_TOKEN_EXPIRE_MINUTES")
     refresh_token_expire_days: int = Field(default=7, env="REFRESH_TOKEN_EXPIRE_DAYS")
 
     # CORS
-    cors_origins: str = Field(default='["http://localhost:3000"]', env="CORS_ORIGINS")
+    cors_origins: List[str] = Field(default=["http://localhost:3000", "http://localhost:5173"], env="CORS_ORIGINS")
 
-    @validator("cors_origins", pre=True)
+    @field_validator("cors_origins", mode="before")
+    @classmethod
     def parse_cors_origins(cls, v):
         if isinstance(v, str):
             return json.loads(v)
@@ -61,9 +62,10 @@ class Settings(BaseSettings):
 
     # Translation
     translation_cache_ttl: int = Field(default=86400, env="TRANSLATION_CACHE_TTL")
-    supported_languages: str = Field(default='["en", "ur", "fr", "ar", "de"]', env="SUPPORTED_LANGUAGES")
+    supported_languages: List[str] = Field(default=["en", "ur", "fr", "ar", "de"], env="SUPPORTED_LANGUAGES")
 
-    @validator("supported_languages", pre=True)
+    @field_validator("supported_languages", mode="before")
+    @classmethod
     def parse_supported_languages(cls, v):
         if isinstance(v, str):
             return json.loads(v)
