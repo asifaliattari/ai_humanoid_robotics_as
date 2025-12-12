@@ -3,11 +3,18 @@
  * Sets the backend URL based on environment
  */
 
-// Backend API base URL
-export const API_BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://your-backend.run.app' // Change this when you deploy
-    : 'http://localhost:8000';
+// Check if we're in production without a backend
+const isDevelopment = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+
+// Backend API base URL - set your deployed backend URL here when available
+const PRODUCTION_BACKEND_URL = ''; // e.g., 'https://your-backend.railway.app'
+
+export const API_BASE_URL = isDevelopment
+  ? 'http://localhost:8000'
+  : PRODUCTION_BACKEND_URL;
+
+// Flag to check if backend is configured
+export const IS_BACKEND_AVAILABLE = isDevelopment || PRODUCTION_BACKEND_URL !== '';
 
 // API endpoints
 export const API_ENDPOINTS = {

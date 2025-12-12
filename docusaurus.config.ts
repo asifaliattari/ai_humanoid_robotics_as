@@ -6,16 +6,23 @@ import type * as Preset from '@docusaurus/preset-classic';
 const githubUsername = 'asifaliattari';
 const repoName = 'ai_humanoid_robotics_as';
 
+// Detect deployment environment
+const isVercel = process.env.VERCEL === '1';
+const siteUrl = isVercel
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://ai-humanoid-robotics-as.vercel.app')
+  : `https://${githubUsername}.github.io`;
+const baseUrl = isVercel ? '/' : `/${repoName}/`;
+
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'An AI-native textbook for building autonomous humanoid robots with ROS 2, Isaac, and Vision-Language-Action systems',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: `https://${githubUsername}.github.io`,
+  url: siteUrl,
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: `/${repoName}/`,
+  // For Vercel: '/', For GitHub Pages: '/<projectName>/'
+  baseUrl: baseUrl,
 
   // GitHub pages deployment config.
   organizationName: githubUsername,
