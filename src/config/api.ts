@@ -6,8 +6,8 @@
 // Check if we're in production without a backend
 const isDevelopment = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 
-// Backend API base URL - set your deployed backend URL here when available
-const PRODUCTION_BACKEND_URL = ''; // e.g., 'https://your-backend.railway.app'
+// Backend API base URL - Hugging Face Spaces
+const PRODUCTION_BACKEND_URL = 'https://asifaliastolixgen-physical-ai-book-api.hf.space';
 
 export const API_BASE_URL = isDevelopment
   ? 'http://localhost:8000'
