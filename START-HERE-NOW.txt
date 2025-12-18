@@ -1,0 +1,98 @@
+╔══════════════════════════════════════════════════════════════╗
+║            READY TO START - 3 SIMPLE STEPS                   ║
+╚══════════════════════════════════════════════════════════════╝
+
+BEFORE YOU START:
+═══════════════════════════════════════════════════════════════
+
+1. Fix your Qdrant URL:
+   - Open: backend\.env in Notepad
+   - Find: QDRANT_URL="https://your-cluster.qdrant.io"
+   - Replace with YOUR cluster URL from https://cloud.qdrant.io/
+   - Example: QDRANT_URL="https://abc123-xyz.qdrant.io"
+   - Save file (Ctrl+S)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Run Backend
+═══════════════════════════════════════════════════════════════
+
+Double-click: DO-EVERYTHING.bat
+
+This will:
+✓ Check your API keys
+✓ Install packages
+✓ Generate embeddings ($2-5 one-time cost)
+✓ Start backend server
+
+When it asks "Continue with embedding generation? (Y/N):"
+Type: Y
+Press: Enter
+
+KEEP THIS WINDOW OPEN!
+
+═══════════════════════════════════════════════════════════════
+
+STEP 2: Run Frontend (New Window)
+═══════════════════════════════════════════════════════════════
+
+Double-click: START-SIMPLE.bat
+
+This will:
+✓ Install frontend packages (first time only)
+✓ Start the website
+✓ Open browser automatically
+
+KEEP THIS WINDOW OPEN TOO!
+
+═══════════════════════════════════════════════════════════════
+
+STEP 3: Test Your Chatbot
+═══════════════════════════════════════════════════════════════
+
+Browser opens to: http://localhost:3000
+
+1. Click any module (e.g., "Modules" → "ROS 2")
+2. Look for 💬 chat button (bottom right)
+3. Click it
+4. Type: "What is ROS 2?"
+5. Press Enter
+6. Get AI answer! ✓
+
+═══════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════
+
+"Qdrant connection failed"
+→ Fix QDRANT_URL in backend\.env (see above)
+
+"OpenAI error"
+→ Check OPENAI_API_KEY in backend\.env
+
+"Port 8000 already in use"
+→ Close other programs using port 8000
+
+"Port 3000 already in use"
+→ Close other programs using port 3000
+
+Still not working?
+→ Run: fresh-install.bat (starts completely fresh)
+
+═══════════════════════════════════════════════════════════════
+
+WHAT YOU HAVE NOW:
+═══════════════════════════════════════════════════════════════
+
+✓ RAG Chatbot (AI assistant for your book)
+✓ English-only textbook
+✓ SQLite database (local, no cloud)
+✓ Fast & simple setup
+
+Cost: ~$2-5 setup + ~$0.01-0.03 per chatbot query
+
+═══════════════════════════════════════════════════════════════
+
+READY? Start with Step 1! Double-click: DO-EVERYTHING.bat
+
+═══════════════════════════════════════════════════════════════

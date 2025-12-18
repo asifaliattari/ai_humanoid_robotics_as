@@ -1,3 +1,14 @@
+---
+title: Physical AI Book API
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
 # Backend - Physical AI & Humanoid Robotics Book
 
 FastAPI backend providing RAG chatbot, personalization, and translation services for the AI-native textbook.
@@ -390,6 +401,40 @@ python -m scripts.generate_embeddings
 - [ ] Set up monitoring (health check endpoint)
 - [ ] Configure rate limiting
 - [ ] Set up logging aggregation
+
+### Deploy to Hugging Face Spaces (Free)
+
+1. **Create a new Space** at https://huggingface.co/new-space
+   - Choose **Docker** as the SDK
+   - Set visibility (public or private)
+
+2. **Clone the Space repository**:
+   ```bash
+   git clone https://huggingface.co/spaces/YOUR_USERNAME/YOUR_SPACE_NAME
+   cd YOUR_SPACE_NAME
+   ```
+
+3. **Copy backend files**:
+   ```bash
+   cp -r /path/to/backend/* .
+   ```
+
+4. **Push to Hugging Face**:
+   ```bash
+   git add .
+   git commit -m "Initial deployment"
+   git push
+   ```
+
+5. **Set Secrets** in Space Settings:
+   - `OPENAI_API_KEY` - Your OpenAI API key
+   - `QDRANT_URL` - Qdrant Cloud URL
+   - `QDRANT_API_KEY` - Qdrant API key
+   - `DATABASE_URL` - Neon Postgres connection string
+   - `JWT_SECRET` - Random secret for JWT tokens
+   - `ENVIRONMENT` - Set to `production`
+
+Your API will be available at: `https://YOUR_USERNAME-YOUR_SPACE_NAME.hf.space`
 
 ### Deploy to Cloud
 
