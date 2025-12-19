@@ -8,62 +8,9 @@ import BookPageWrapper from '@site/src/components/BookPageWrapper';
 
 <BookPageWrapper sectionId="ai-features/how-to-use">
 
-This textbook includes three AI-native features to enhance your learning experience:
+This textbook includes AI-native features to enhance your learning experience:
 
-## 1. 🌐 Multi-Language Translation
-
-Click any language button at the top of the page to translate the entire content:
-
-- **English (EN)** - Original content
-- **Urdu (اردو)** - Right-to-left support
-- **French (Français)**
-- **Arabic (العربية)** - Right-to-left support
-- **German (Deutsch)**
-
-### How It Works
-
-- First translation takes 3-5 seconds (uses GPT-4)
-- Subsequent views are instant (cached)
-- Code blocks and technical terms remain untranslated
-- Click "English" to return to original
-
-**Try it now!** Click a language button above to see this page translated.
-
-## 2. ⚙️ Content Personalization
-
-Click the **"Personalize for Me"** button to adapt content based on your:
-
-### Hardware Setup
-- **No RTX GPU?** → See cloud alternatives (Colab, Paperspace, AWS)
-- **No Jetson?** → Simulation-first workflow
-- **Have Jetson?** → Optimization tips (TensorRT, nvpmodel)
-- **No Robot?** → Simulation testing strategies
-
-### Experience Level
-- **ROS 2 Beginner?** → Prerequisites and basic tutorials
-- **ROS 2 Expert?** → Research papers and advanced topics
-- **ML Beginner?** → Simplified ML concepts
-- **ML Expert?** → Optimization techniques
-
-### Example Adaptations
-
-If you indicated you have **no RTX GPU**, you'll see sections like:
-
-> ### ☁️ Cloud GPU Alternative (For Your Setup)
->
-> Since you don't have a local RTX GPU, consider these cloud options:
->
-> | Service | GPU | Cost |
-> |---------|-----|------|
-> | Google Colab | T4 | Free |
-> | Paperspace | RTX 4000+ | ~$0.50/hr |
-
-**To enable personalization:**
-1. Sign in (top right)
-2. Complete your profile (hardware & experience)
-3. Click "Personalize for Me" on any page
-
-## 3. 💬 AI Chat Assistant
+## 1. 💬 AI Chat Assistant
 
 Click the floating chat button (bottom right) to ask questions about the book.
 
@@ -98,44 +45,38 @@ The AI searches the entire textbook and provides answers with sources.
 - Ask about unrelated topics (AI only knows this textbook)
 - Expect it to write full programs (use code snippets as starting points)
 
-## Privacy & Data
+---
 
-- **Translations**: Cached for faster loading (anonymous)
-- **Personalization**: Requires account, stored securely
-- **Chat History**: Optional logging for improving responses
-- **Selected Text**: Never logged or stored
+## 2. 🔐 User Authentication
 
-## Troubleshooting
+Create an account to save your progress and preferences.
 
-### Translation Failed
-- Check internet connection
-- Try refreshing the page
-- Some special characters may need manual review
+### How to Sign Up
+1. Click **Login** (top right)
+2. Fill in email, password, and name
+3. Click **Create Account**
 
-### Personalization Not Working
-- Make sure you're signed in
-- Verify your profile is complete
-- Check browser console for errors
+### After Login
+- Your initials appear in the navbar (e.g., "AS")
+- Click your avatar for account options
+- Click **Logout** to sign out
 
-### Chat Not Responding
-- Verify backend API is running
-- Check browser console for errors
-- Try refreshing and asking again
+---
 
 ## Technical Details
 
-All three features are powered by:
+Features are powered by:
 
 - **Backend**: FastAPI (Python)
 - **Vector DB**: Qdrant (semantic search)
-- **Database**: Neon Postgres (user data)
-- **LLM**: OpenAI GPT-4 Turbo
-- **Embeddings**: text-embedding-3-small
+- **Database**: SQLite / Neon Postgres
+- **LLM**: OpenAI GPT-4
+- **Auth**: JWT tokens with bcrypt
 
 For developers interested in how this works, see [AI Features Documentation](/docs/ai-features/).
 
 ---
 
-**Ready to explore?** Try using these features on any chapter of the book!
+**Ready to explore?** Try using the chat assistant on any chapter of the book!
 
 </BookPageWrapper>

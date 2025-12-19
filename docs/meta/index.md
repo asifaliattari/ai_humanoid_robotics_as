@@ -2,7 +2,7 @@
 
 ## How to Use This Book
 
-Welcome to the **Physical AI & Humanoid Robotics** textbook! This is an **AI-native learning platform** that adapts to your needs and provides interactive features beyond traditional books.
+Welcome to the **Physical AI & Humanoid Robotics** textbook! This is an **AI-native learning platform** with interactive features beyond traditional books.
 
 ### Navigation
 
@@ -12,16 +12,13 @@ Welcome to the **Physical AI & Humanoid Robotics** textbook! This is an **AI-nat
 - **Modules**: Core learning modules (ROS 2, Digital Twin, Isaac, VLA)
 - **Hardware**: Hardware requirements and decision trees
 - **Capstone**: Final integration project
-- **AI Features**: RAG chatbot, personalization, translation
-- **Chatbot**: Open AI assistant
-- **Login**: Sign up to enable personalization
+- **AI Features**: RAG chatbot documentation
+- **Login**: Sign up to save your progress
 
 **Left Sidebar**: Hierarchical table of contents (auto-generated per module)
 
-**Floating Action Buttons** (bottom-right):
-- 🤖 **Ask the Book**: RAG chatbot
-- 🌐 **Translate**: Switch to UR/FR/AR/DE
-- 🎯 **Personalize**: Adapt content to your hardware
+**Floating Chat Button** (bottom-right):
+- 🤖 **Ask the Book**: AI-powered Q&A
 
 ### Reading Path
 
@@ -52,26 +49,11 @@ Click the 🤖 button to ask questions about any topic in the book.
 - **Full Book**: Searches all content
 - **Selected Text**: Highlight text → Ask for clarification
 
-#### 2. Personalization
-Sign up and tell us:
-- Your hardware (RTX GPU, Jetson, Cloud-only)
-- Your experience level (Beginner, Intermediate, Advanced)
-- Your preferred language (EN/UR/FR/AR/DE)
-
-**Result**: Content adapts to show:
-- Cloud alternatives if you lack RTX GPU
-- Beginner explanations if you're new to ROS 2
-- Advanced paper links if you're an expert
-
-#### 3. Multi-Language Translation
-Click 🌐 to read in:
-- **English** (original)
-- **Urdu** (اردو)
-- **French** (Français)
-- **Arabic** (العربية)
-- **German** (Deutsch)
-
-**Note**: Code blocks remain in English for consistency.
+#### 2. User Authentication
+Sign up to:
+- Save your learning progress
+- Access personalized features
+- See your initials in the navbar
 
 ---
 
@@ -143,28 +125,16 @@ This book is **open-source** and welcomes contributions!
 - ✅ Reproducibility (all commands testable)
 - ✅ AI-native modularity (reusable, well-structured)
 
-**Translation Contributions**:
-- Native speakers: Help improve Urdu, French, Arabic, German translations
-- Request new languages (Spanish, Mandarin, Japanese, etc.)
-
 ---
 
 ## Acknowledgments
-
-**Technical Reviewers**:
-- [To be added]
 
 **Open-Source Tools**:
 - [Docusaurus](https://docusaurus.io/) - Static site generator
 - [ROS 2](https://docs.ros.org/) - Robot Operating System
 - [NVIDIA Isaac](https://developer.nvidia.com/isaac) - Simulation and perception
 - [Qdrant](https://qdrant.tech/) - Vector database for RAG
-- [Neon](https://neon.tech/) - Serverless Postgres
-- [Better-Auth](https://www.better-auth.com/) - Authentication system
-
-**AI Assistants**:
-- [Claude (Anthropic)](https://www.anthropic.com/claude) - Content generation and subagents
-- [ChatGPT (OpenAI)](https://openai.com/chatgpt) - RAG chatbot and translation
+- [OpenAI](https://openai.com/) - GPT-4 for chatbot
 
 ---
 
@@ -201,8 +171,7 @@ Under the following terms:
 **v1.0.0** (2025-12-05):
 - Initial release
 - Iteration 1: Conceptual content for all 4 modules
-- AI-native features: RAG chatbot, personalization, translation (5 languages)
-- Spec-Kit Plus driven development
+- AI-native features: RAG chatbot, user authentication
 
 **Future Releases**:
 - v1.1.0: Iteration 2 (detailed tutorials and code examples)
