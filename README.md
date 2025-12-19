@@ -9,29 +9,18 @@ An interactive AI-native textbook built with **Docusaurus v3**, **FastAPI**, and
 
 ## Features
 
-### AI-Native Learning Experience
-
-- **RAG Chatbot**: Ask questions about the entire book or selected text
-  - Book-wide semantic search powered by Qdrant vector database
-  - Selection-based Q&A for highlighted text
-  - Answers with cited sources
-
-- **Personalized Learning**: Content adapts to your setup
-  - Hardware-based: Cloud GPU alternatives, Jetson optimizations
-  - Experience-based: Beginner tutorials, expert research papers
-  - Robot-specific: Integration guides for your hardware
+- **RAG Chatbot**: Ask questions about the book content
+  - Semantic search powered by Qdrant vector database
+  - AI-powered answers with GPT-4
 
 - **User Authentication**: JWT-based login system
   - Secure registration and login
   - User avatar with initials in navbar
-  - Persistent sessions
 
-### Technical Excellence
-
-- **Spec-driven development** - No content without specifications
-- **Technical accuracy** - All content based on official documentation
-- **Beginner-friendly style** - Clear, accessible instruction
-- **Reproducibility** - All tutorials and commands are verified
+- **Technical Content**: Comprehensive robotics learning
+  - ROS 2, NVIDIA Isaac, Digital Twin, VLA systems
+  - Hardware guides and tutorials
+  - Beginner-friendly instruction
 
 ## Quick Start
 
@@ -82,9 +71,7 @@ ai_humanoid_robotics_as/
 ├── backend/                    # FastAPI backend
 │   ├── api/                    # API endpoints
 │   │   ├── auth/               # Authentication (JWT)
-│   │   ├── rag/                # RAG chatbot
-│   │   ├── personalization/    # Content adaptation
-│   │   └── translation/        # Translation service
+│   │   └── rag/                # RAG chatbot
 │   ├── models/                 # SQLAlchemy models
 │   ├── main.py                 # FastAPI app
 │   ├── config.py               # Settings
