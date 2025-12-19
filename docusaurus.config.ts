@@ -135,10 +135,8 @@ const config: Config = {
           position: 'right',
         },
         {
-          to: 'login',
-          label: 'Login',
+          type: 'custom-user',
           position: 'right',
-          className: 'login-button',
         },
       ],
     },

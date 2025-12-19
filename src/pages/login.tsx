@@ -49,6 +49,9 @@ export default function Login(): JSX.Element {
         localStorage.setItem('user_id', data.user_id);
         localStorage.setItem('user_email', data.email);
 
+        // Dispatch event to update navbar
+        window.dispatchEvent(new Event('userLoggedIn'));
+
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
           window.location.href = docsUrl;
