@@ -33,17 +33,18 @@ async def lifespan(app: FastAPI):
     logger.info(f"Starting {settings.app_name} v{settings.app_version}")
     logger.info(f"Environment: {settings.environment}")
 
-    # Initialize connections
-    # TODO: Initialize Qdrant client
-    # TODO: Initialize Neon Postgres connection pool
-    # TODO: Verify OpenAI API key
+    # Initialize database tables
+    from models import init_db
+    try:
+        init_db()
+        logger.info("Database tables initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize database: {e}")
 
     yield
 
     # Shutdown
     logger.info("Shutting down application")
-    # TODO: Close database connections
-    # TODO: Close Qdrant client
 
 
 app = FastAPI(
