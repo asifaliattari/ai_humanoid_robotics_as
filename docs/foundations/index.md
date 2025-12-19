@@ -94,9 +94,7 @@ By the end of this course, you will be able to:
 
 **AI-Native Features**:
 - 🤖 **Ask the Book**: RAG chatbot answers questions about any topic
-- 🎯 **Personalize**: Content adapts to your hardware and experience level
-- 🌐 **Translate**: Read in English, Urdu, French, Arabic, or German
-- 🧠 **Claude Subagents**: AI assistants help with specific modules
+- 🔐 **Login**: Create an account to save your progress
 
 **Suggested Path**:
 1. Start with **Foundations** (this section)
