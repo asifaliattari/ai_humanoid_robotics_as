@@ -75,3 +75,243 @@
 [data-theme='dark'] .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* ============================================
+   RTL (Right-to-Left) Support for Urdu
+   ============================================ */
+
+/* Urdu font family */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+
+/* RTL body class */
+body.rtl {
+  font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* RTL direction */
+[dir='rtl'] {
+  text-align: right;
+}
+
+/* RTL Navbar */
+[dir='rtl'] .navbar__items {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .navbar__items--right {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .navbar__brand {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir='rtl'] .navbar__title {
+  font-family: 'Noto Nastaliq Urdu', sans-serif;
+}
+
+/* RTL Sidebar */
+[dir='rtl'] .theme-doc-sidebar-container {
+  border-right: none;
+  border-left: 1px solid var(--ifm-toc-border-color);
+}
+
+[dir='rtl'] .menu__link {
+  padding-right: var(--ifm-menu-link-padding-horizontal);
+  padding-left: 0;
+}
+
+[dir='rtl'] .menu__list-item-collapsible {
+  flex-direction: row-reverse;
+}
+
+/* RTL Content */
+[dir='rtl'] .markdown h1,
+[dir='rtl'] .markdown h2,
+[dir='rtl'] .markdown h3,
+[dir='rtl'] .markdown h4,
+[dir='rtl'] .markdown p,
+[dir='rtl'] .markdown li {
+  text-align: right;
+  font-family: 'Noto Nastaliq Urdu', sans-serif;
+}
+
+[dir='rtl'] .markdown ul,
+[dir='rtl'] .markdown ol {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+/* RTL Buttons */
+[dir='rtl'] .button {
+  font-family: 'Noto Nastaliq Urdu', sans-serif;
+}
+
+[dir='rtl'] .buttons {
+  flex-direction: row-reverse;
+}
+
+/* RTL Hero Section */
+[dir='rtl'] .hero__title,
+[dir='rtl'] .hero__subtitle {
+  font-family: 'Noto Nastaliq Urdu', sans-serif;
+}
+
+/* RTL Feature Cards */
+[dir='rtl'] .row {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .featureContent {
+  text-align: right;
+}
+
+[dir='rtl'] .featureArrow {
+  transform: scaleX(-1);
+}
+
+/* RTL Footer */
+[dir='rtl'] .footer__links {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .footer__col {
+  text-align: right;
+}
+
+/* RTL Chat Widget */
+[dir='rtl'] .rag-chat-widget {
+  left: 24px;
+  right: auto;
+}
+
+[dir='rtl'] .rag-fab {
+  left: 24px;
+  right: auto;
+}
+
+[dir='rtl'] .chat-messages {
+  direction: rtl;
+}
+
+[dir='rtl'] .message {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .message-content {
+  text-align: right;
+}
+
+[dir='rtl'] .chat-input {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .chat-input textarea {
+  text-align: right;
+}
+
+/* RTL Selection Tooltip */
+[dir='rtl'] .selection-tooltip {
+  font-family: 'Noto Nastaliq Urdu', sans-serif;
+}
+
+/* RTL Author Section */
+[dir='rtl'] .authorContent {
+  text-align: right;
+}
+
+[dir='rtl'] .socialLinks {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .socialLink {
+  flex-direction: row-reverse;
+}
+
+/* RTL Stats */
+[dir='rtl'] .stats {
+  flex-direction: row-reverse;
+}
+
+/* RTL CTA Section */
+[dir='rtl'] .ctaContent {
+  text-align: right;
+}
+
+[dir='rtl'] .ctaButtons {
+  flex-direction: row-reverse;
+}
+
+/* RTL Dropdown menus */
+[dir='rtl'] .dropdown__menu {
+  right: auto;
+  left: 0;
+}
+
+/* RTL Breadcrumbs */
+[dir='rtl'] .breadcrumbs {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .breadcrumbs__link::before {
+  content: '\\';
+  transform: scaleX(-1);
+}
+
+/* RTL Table of Contents */
+[dir='rtl'] .table-of-contents {
+  text-align: right;
+  border-left: none;
+  border-right: 1px solid var(--ifm-toc-border-color);
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+/* RTL Code blocks - keep LTR for code */
+[dir='rtl'] pre,
+[dir='rtl'] code {
+  direction: ltr;
+  text-align: left;
+}
+
+/* RTL Pagination */
+[dir='rtl'] .pagination-nav {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .pagination-nav__link--prev {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .pagination-nav__link--next {
+  flex-direction: row-reverse;
+}
+
+/* Smooth transition when switching languages */
+body {
+  transition: direction 0.3s ease;
+}
+
+.navbar,
+.main-wrapper,
+.footer {
+  transition: all 0.3s ease;
+}
+
+/* Language-specific text sizing for Urdu */
+[dir='rtl'] .hero__title {
+  font-size: 2.8rem;
+  line-height: 1.4;
+}
+
+[dir='rtl'] .hero__subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Ensure icons don't flip in RTL */
+[dir='rtl'] .navbar__logo,
+[dir='rtl'] svg:not(.rtl-flip) {
+  transform: none;
+}

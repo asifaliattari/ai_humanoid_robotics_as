@@ -1,0 +1,124 @@
+/* Language Toggle Button */
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+  border-color: var(--ifm-color-primary);
+  transform: scale(1.05);
+}
+
+.language-toggle-icon {
+  font-size: 16px;
+}
+
+.language-toggle-text {
+  font-family: 'Segoe UI', 'Noto Nastaliq Urdu', sans-serif;
+}
+
+/* Language Dropdown */
+.language-dropdown {
+  padding: 6px 12px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ifm-font-color-base);
+  transition: all 0.2s ease;
+}
+
+.language-dropdown:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* Pill Toggle */
+.language-pill-toggle {
+  display: flex;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.language-pill {
+  padding: 6px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ifm-font-color-secondary);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', 'Noto Nastaliq Urdu', sans-serif;
+}
+
+.language-pill:hover {
+  color: var(--ifm-color-primary);
+}
+
+.language-pill.active {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .language-toggle {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+[data-theme='dark'] .language-toggle:hover {
+  background: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .language-dropdown {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+[data-theme='dark'] .language-pill-toggle {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+/* RTL adjustments */
+[dir='rtl'] .language-toggle {
+  flex-direction: row-reverse;
+}
+
+/* Animation for language switch */
+@keyframes languageSwitch {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.language-toggle:active {
+  animation: languageSwitch 0.2s ease;
+}

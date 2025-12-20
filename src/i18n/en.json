@@ -1,0 +1,106 @@
+{
+  "common": {
+    "language": "English",
+    "languageCode": "en",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "Home",
+    "book": "Book",
+    "foundations": "Foundations",
+    "modules": "Modules",
+    "hardware": "Hardware",
+    "capstone": "Capstone",
+    "aiFeatures": "AI Features",
+    "blog": "Blog",
+    "github": "GitHub",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "modules": {
+    "ros2": "Module 1: ROS 2",
+    "digitalTwin": "Module 2: Digital Twin",
+    "isaac": "Module 3: Isaac",
+    "vla": "Module 4: VLA"
+  },
+  "home": {
+    "title": "Physical AI & Humanoid Robotics",
+    "tagline": "An AI-native textbook for building autonomous humanoid robots with ROS 2, Isaac, and Vision-Language-Action systems",
+    "startLearning": "Start Learning",
+    "viewFoundations": "View Foundations",
+    "coreModules": "Core Modules",
+    "searchableTopics": "Searchable Topics",
+    "aiPowered": "AI Powered Chatbot",
+    "whatYouLearn": "What You'll Learn",
+    "whatYouLearnDesc": "A comprehensive curriculum covering everything from ROS 2 fundamentals to advanced AI-powered humanoid robotics",
+    "explore": "Explore",
+    "readyToBuild": "Ready to Build the Future?",
+    "readyToBuildDesc": "Start your journey into humanoid robotics today. Our AI-powered textbook adapts to your learning style.",
+    "getStartedFree": "Get Started Free",
+    "tryAiChatbot": "Try AI Chatbot",
+    "aboutAuthor": "About the Author"
+  },
+  "features": {
+    "ros2": {
+      "title": "ROS 2 & Navigation",
+      "description": "Master the Robot Operating System 2 for building robust, real-time robotic applications."
+    },
+    "digitalTwin": {
+      "title": "Digital Twin Simulation",
+      "description": "Create virtual replicas of robots for testing, training, and optimization."
+    },
+    "isaac": {
+      "title": "NVIDIA Isaac",
+      "description": "Leverage GPU-accelerated simulation and AI for next-gen robotics."
+    },
+    "vla": {
+      "title": "Vision-Language-Action",
+      "description": "Train robots with multimodal AI that understands vision, language, and actions."
+    },
+    "hardware": {
+      "title": "Hardware Integration",
+      "description": "Connect simulation to real hardware with Jetson, sensors, and actuators."
+    },
+    "chatbot": {
+      "title": "AI-Powered Chatbot",
+      "description": "Ask questions and get instant answers from the textbook with our RAG chatbot."
+    }
+  },
+  "chatbot": {
+    "title": "AI Assistant",
+    "clearChat": "Clear chat",
+    "bookMode": "Ask anything about the book",
+    "selectionMode": "Asking about selection",
+    "switchToBook": "Switch to book mode",
+    "selectedText": "Selected text:",
+    "welcome": "Hi! I'm your AI assistant for this textbook.",
+    "askAboutSelection": "Ask about your selection:",
+    "explainSimpler": "Explain this in simpler terms",
+    "giveExample": "Give me an example",
+    "whatMeans": "What does this mean?",
+    "tryAsking": "Try asking:",
+    "whatIsRos": "What is ROS 2?",
+    "howDigitalTwin": "How do digital twins work?",
+    "explainIsaac": "Explain Isaac Sim",
+    "highlightTip": "Tip: Highlight any text on the page to ask about it!",
+    "askQuestion": "Ask a question...",
+    "askAboutText": "Ask about the selected text...",
+    "sources": "Sources:",
+    "askAi": "Ask AI",
+    "connectionError": "Could not connect to AI. Please try again."
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name"
+  },
+  "footer": {
+    "docs": "Docs",
+    "tutorial": "Tutorial",
+    "more": "More",
+    "copyright": "Copyright"
+  }
+}

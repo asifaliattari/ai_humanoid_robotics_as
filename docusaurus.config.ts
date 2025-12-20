@@ -135,6 +135,10 @@ const config: Config = {
           position: 'right',
         },
         {
+          type: 'custom-language',
+          position: 'right',
+        },
+        {
           type: 'custom-user',
           position: 'right',
         },
