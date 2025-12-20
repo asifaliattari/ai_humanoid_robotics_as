@@ -62,7 +62,12 @@ async def selection_based_qa(request: SelectionQARequest):
 Answer questions about the provided text excerpt.
 Provide clear, simple explanations suitable for students.
 Use analogies and examples when helpful.
-Keep your answers concise but informative."""
+Keep your answers concise but informative.
+
+Language handling:
+- If the user asks in Roman Urdu (Urdu written in English letters like "yeh samjhao"), respond in Roman Urdu.
+- If the user asks in English, respond in English.
+- Match the user's language style."""
 
         user_prompt = f"""Text excerpt:
 \"\"\"
