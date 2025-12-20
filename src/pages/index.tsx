@@ -51,6 +51,10 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const { t, isRTL } = useTranslation();
 
+  // Use relative links - Docusaurus will handle locale prefix automatically
+  const introLink = 'docs/intro';
+  const foundationsLink = 'docs/foundations/';
+
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className={styles.heroBackground}>
@@ -69,12 +73,12 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"
-            to="docs/intro">
+            to={introLink}>
             {t('home.startLearning')}
           </Link>
           <Link
             className="button button--secondary button--lg"
-            to="docs/foundations/">
+            to={foundationsLink}>
             {t('home.viewFoundations')}
           </Link>
         </div>
@@ -98,8 +102,9 @@ function HomepageHeader() {
 }
 
 function FeatureCard({titleKey, descKey, image, link}) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
+  // Use relative links - Docusaurus handles locale prefix automatically
   return (
     <div className={clsx('col col--4', styles.featureCard)}>
       <Link to={link} className={styles.featureLink}>
@@ -144,6 +149,10 @@ function HomepageFeatures() {
 function HomepageCTA() {
   const { t } = useTranslation();
 
+  // Use relative links - Docusaurus handles locale prefix automatically
+  const introLink = 'docs/intro';
+  const aiLink = 'docs/ai-features/';
+
   return (
     <section className={styles.ctaSection}>
       <div className="container">
@@ -157,12 +166,12 @@ function HomepageCTA() {
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
-              to="docs/intro">
+              to={introLink}>
               {t('home.getStartedFree')}
             </Link>
             <Link
               className="button button--outline button--lg"
-              to="docs/ai-features/">
+              to={aiLink}>
               {t('home.tryAiChatbot')}
             </Link>
           </div>

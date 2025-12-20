@@ -1,8 +1,11 @@
 /**
  * Language Context Provider
  * Manages language state and provides translation functionality
+ * Syncs with Docusaurus i18n system for consistent language switching
  */
 import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 
 // Import translations directly
 import enData from './en.json';
@@ -69,31 +72,48 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguageState] = useState<Language>('en');
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  // Load saved language preference on mount (client-side only)
+  // Get Docusaurus context to sync with i18n locale
+  let docusaurusLocale: Language = 'en';
+  try {
+    const docContext = useDocusaurusContext();
+    docusaurusLocale = (docContext?.i18n?.currentLocale || 'en') as Language;
+  } catch (e) {
+    // Context not available on home page, that's ok
+  }
+
+  // Try to get current locale from URL (for docs pages)
+  let urlLocale: Language = 'en';
+  try {
+    const location = useLocation();
+    if (location?.pathname?.startsWith('/ur/')) {
+      urlLocale = 'ur';
+    }
+  } catch (e) {
+    // Location not available, that's ok
+  }
+
+  // Sync language with Docusaurus locale and URL on mount and when they change
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      try {
-        const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-        if (savedLanguage === 'en' || savedLanguage === 'ur') {
-          setLanguageState(savedLanguage);
-        }
-      } catch (e) {
-        console.warn('Could not access localStorage');
-      }
+      // First, check URL to determine the language
+      const detectedLanguage = urlLocale === 'ur' ? 'ur' : 'en';
+      setLanguageState(detectedLanguage);
+      setIsHydrated(true);
     }
-  }, []);
+  }, [urlLocale]);
 
   // Apply RTL direction to document
   useEffect(() => {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== 'undefined' && isHydrated) {
       const dir = language === 'ur' ? 'rtl' : 'ltr';
       document.documentElement.setAttribute('dir', dir);
       document.documentElement.setAttribute('lang', language);
       document.body.classList.remove('rtl', 'ltr');
       document.body.classList.add(language === 'ur' ? 'rtl' : 'ltr');
     }
-  }, [language]);
+  }, [language, isHydrated]);
 
   // Set language and save to localStorage
   const setLanguage = (lang: Language) => {
