@@ -1,0 +1,52 @@
+/**
+ * Urdu Font Definitions
+ * Primary: Noto Nastaliq Urdu (for Nastaleeq script)
+ * Fallbacks: Arial, Segoe UI
+ */
+
+/* Import Noto Nastaliq Urdu - Excellent for Urdu/Nastaleeq display */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+
+/* Alternative: Droid Nastaliq Urdu from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Droid+Nastaliq+Urdu:wght@400;700&display=swap');
+
+/**
+ * Noor Nastaleeq Font Definition
+ * Using Noto Nastaliq Urdu as the primary Nastaleeq font
+ * Noto Nastaliq Urdu is specifically designed for Nastaleeq script
+ */
+@font-face {
+  font-family: 'Noor Nastaleeq';
+  /* Primary: Noto Nastaliq Urdu - Best for Nastaleeq rendering */
+  src: local('Noto Nastaliq Urdu'), local('Noto-Nastaliq-Urdu'),
+       url('https://fonts.gstatic.com/s/opensan/v40/mem8YaGs126MiZpBA-UFVZ0e.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noor Nastaleeq';
+  src: local('Noto Nastaliq Urdu'), local('Noto-Nastaliq-Urdu');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noor Nastaleeq';
+  src: local('Noto Nastaliq Urdu'), local('Noto-Nastaliq-Urdu');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noor Nastaleeq';
+  src: local('Noto Nastaliq Urdu'), local('Noto-Nastaliq-Urdu');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Alternative cascading order for maximum compatibility */
+:root {
+  --urdu-font-family: 'Noto Nastaliq Urdu', 'Droid Nastaliq Urdu', 'Noor Nastaleeq', 'Arial', 'Segoe UI', sans-serif;
+  --urdu-heading-font: 'Noto Nastaliq Urdu', 'Droid Nastaliq Urdu', 'Arial', sans-serif;
+}

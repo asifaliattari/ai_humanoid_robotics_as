@@ -2,6 +2,9 @@
  * Custom CSS for Docusaurus Technical Book
  */
 
+/* Import Urdu font definitions */
+@import url('./fonts.css');
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -80,20 +83,38 @@
    RTL (Right-to-Left) Support for Urdu
    ============================================ */
 
-/* Urdu font family */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
-
 /* RTL body class */
 body.rtl {
-  font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
-}
-
-/* RTL direction */
-[dir='rtl'] {
+  font-family: var(--urdu-font-family);
+  direction: rtl;
   text-align: right;
 }
 
+/* RTL direction - Enforce on all elements */
+[dir='rtl'] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL HTML element */
+html[lang='ur'] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Apply Urdu fonts to all text in RTL mode */
+[dir='rtl'] body,
+html[lang='ur'] {
+  font-family: var(--urdu-font-family);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+
 /* RTL Navbar */
+[dir='rtl'] .navbar {
+  direction: rtl;
+}
+
 [dir='rtl'] .navbar__items {
   flex-direction: row-reverse;
 }
@@ -108,18 +129,22 @@ body.rtl {
 }
 
 [dir='rtl'] .navbar__title {
-  font-family: 'Noto Nastaliq Urdu', sans-serif;
+  font-family: var(--urdu-heading-font);
+  direction: rtl;
 }
 
 /* RTL Sidebar */
 [dir='rtl'] .theme-doc-sidebar-container {
   border-right: none;
   border-left: 1px solid var(--ifm-toc-border-color);
+  direction: rtl;
 }
 
 [dir='rtl'] .menu__link {
   padding-right: var(--ifm-menu-link-padding-horizontal);
   padding-left: 0;
+  text-align: right;
+  direction: rtl;
 }
 
 [dir='rtl'] .menu__list-item-collapsible {
@@ -127,25 +152,41 @@ body.rtl {
 }
 
 /* RTL Content */
+[dir='rtl'] .markdown {
+  direction: rtl;
+  text-align: right;
+}
+
 [dir='rtl'] .markdown h1,
 [dir='rtl'] .markdown h2,
 [dir='rtl'] .markdown h3,
 [dir='rtl'] .markdown h4,
+[dir='rtl'] .markdown h5,
+[dir='rtl'] .markdown h6,
 [dir='rtl'] .markdown p,
-[dir='rtl'] .markdown li {
+[dir='rtl'] .markdown li,
+[dir='rtl'] .markdown blockquote {
   text-align: right;
-  font-family: 'Noto Nastaliq Urdu', sans-serif;
+  direction: rtl;
+  font-family: var(--urdu-font-family);
 }
 
 [dir='rtl'] .markdown ul,
 [dir='rtl'] .markdown ol {
   padding-right: 2rem;
   padding-left: 0;
+  direction: rtl;
+}
+
+/* RTL Lists */
+[dir='rtl'] .markdown li::marker {
+  margin-right: 0.5rem;
 }
 
 /* RTL Buttons */
 [dir='rtl'] .button {
-  font-family: 'Noto Nastaliq Urdu', sans-serif;
+  font-family: var(--urdu-font-family);
+  direction: rtl;
 }
 
 [dir='rtl'] .buttons {
@@ -155,7 +196,9 @@ body.rtl {
 /* RTL Hero Section */
 [dir='rtl'] .hero__title,
 [dir='rtl'] .hero__subtitle {
-  font-family: 'Noto Nastaliq Urdu', sans-serif;
+  font-family: var(--urdu-heading-font);
+  direction: rtl;
+  text-align: right;
 }
 
 /* RTL Feature Cards */
@@ -213,7 +256,8 @@ body.rtl {
 
 /* RTL Selection Tooltip */
 [dir='rtl'] .selection-tooltip {
-  font-family: 'Noto Nastaliq Urdu', sans-serif;
+  font-family: var(--urdu-font-family);
+  direction: rtl;
 }
 
 /* RTL Author Section */
