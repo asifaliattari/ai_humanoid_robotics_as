@@ -1,76 +1,52 @@
 /**
  * Language Toggle Component
- * Switches between English and Urdu with smooth transitions
+ * Uses Docusaurus i18n for proper language switching
  */
 import React from 'react';
-import { useLanguage, Language } from '@site/src/i18n';
+import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import './styles.css';
 
 export function LanguageToggle() {
-  const { language, setLanguage } = useLanguage();
+  const { i18n: { currentLocale, locales, localeConfigs } } = useDocusaurusContext();
+  const location = useLocation();
 
-  const toggleLanguage = () => {
-    const newLang: Language = language === 'en' ? 'ur' : 'en';
-    setLanguage(newLang);
+  const switchLocale = () => {
+    const newLocale = currentLocale === 'en' ? 'ur' : 'en';
+
+    // Build the new URL with the new locale
+    let newPath = location.pathname;
+
+    // Remove current locale prefix if exists
+    if (currentLocale !== 'en') {
+      newPath = newPath.replace(`/${currentLocale}`, '') || '/';
+    }
+
+    // Add new locale prefix (except for default 'en')
+    if (newLocale !== 'en') {
+      newPath = `/${newLocale}${newPath}`;
+    }
+
+    // Navigate to new locale
+    window.location.href = newPath;
   };
+
+  const isUrdu = currentLocale === 'ur';
 
   return (
     <button
-      onClick={toggleLanguage}
+      onClick={switchLocale}
       className="language-toggle"
-      title={language === 'en' ? 'اردو میں تبدیل کریں' : 'Switch to English'}
-      aria-label={language === 'en' ? 'Switch to Urdu' : 'Switch to English'}
+      title={isUrdu ? 'Switch to English' : 'اردو میں تبدیل کریں'}
+      aria-label={isUrdu ? 'Switch to English' : 'Switch to Urdu'}
     >
       <span className="language-toggle-icon">
-        {language === 'en' ? '🇵🇰' : '🇬🇧'}
+        {isUrdu ? '🇬🇧' : '🇵🇰'}
       </span>
       <span className="language-toggle-text">
-        {language === 'en' ? 'اردو' : 'EN'}
+        {isUrdu ? 'EN' : 'اردو'}
       </span>
     </button>
-  );
-}
-
-// Alternative: Dropdown style toggle
-export function LanguageDropdown() {
-  const { language, setLanguage } = useLanguage();
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value as Language);
-  };
-
-  return (
-    <select
-      value={language}
-      onChange={handleChange}
-      className="language-dropdown"
-      aria-label="Select language"
-    >
-      <option value="en">English</option>
-      <option value="ur">اردو</option>
-    </select>
-  );
-}
-
-// Pill-style toggle
-export function LanguagePillToggle() {
-  const { language, setLanguage } = useLanguage();
-
-  return (
-    <div className="language-pill-toggle">
-      <button
-        onClick={() => setLanguage('en')}
-        className={`language-pill ${language === 'en' ? 'active' : ''}`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => setLanguage('ur')}
-        className={`language-pill ${language === 'ur' ? 'active' : ''}`}
-      >
-        اردو
-      </button>
-    </div>
   );
 }
 

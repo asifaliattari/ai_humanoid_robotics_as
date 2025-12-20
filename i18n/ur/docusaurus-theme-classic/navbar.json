@@ -1,0 +1,54 @@
+{
+  "title": {
+    "message": "فزیکل اے آئی اور ہیومنائیڈ روبوٹکس",
+    "description": "The title in the navbar"
+  },
+  "item.label.Book": {
+    "message": "کتاب",
+    "description": "Navbar item with label Book"
+  },
+  "item.label.Foundations": {
+    "message": "بنیادیات",
+    "description": "Navbar item with label Foundations"
+  },
+  "item.label.Modules": {
+    "message": "ماڈیولز",
+    "description": "Navbar item with label Modules"
+  },
+  "item.label.Module 1: ROS 2": {
+    "message": "ماڈیول 1: آر او ایس 2",
+    "description": "Navbar item with label Module 1: ROS 2"
+  },
+  "item.label.Module 2: Digital Twin": {
+    "message": "ماڈیول 2: ڈیجیٹل ٹوئن",
+    "description": "Navbar item with label Module 2: Digital Twin"
+  },
+  "item.label.Module 3: Isaac": {
+    "message": "ماڈیول 3: آئزک",
+    "description": "Navbar item with label Module 3: Isaac"
+  },
+  "item.label.Module 4: VLA": {
+    "message": "ماڈیول 4: وی ایل اے",
+    "description": "Navbar item with label Module 4: VLA"
+  },
+  "item.label.Hardware": {
+    "message": "ہارڈویئر",
+    "description": "Navbar item with label Hardware"
+  },
+  "item.label.Capstone": {
+    "message": "کیپسٹون",
+    "description": "Navbar item with label Capstone"
+  },
+  "item.label.AI Features": {
+    "message": "اے آئی خصوصیات",
+    "description": "Navbar item with label AI Features"
+  },
+  "item.label.Blog": {
+    "message": "بلاگ",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.GitHub": {
+    "message": "گٹ ہب",
+    "description": "Navbar item with label GitHub"
+  }
+}

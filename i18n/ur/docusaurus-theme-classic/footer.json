@@ -1,0 +1,26 @@
+{
+  "link.title.Docs": {
+    "message": "دستاویزات",
+    "description": "Footer link title for Docs"
+  },
+  "link.title.More": {
+    "message": "مزید",
+    "description": "Footer link title for More"
+  },
+  "link.item.label.Tutorial": {
+    "message": "ٹیوٹوریل",
+    "description": "Footer link label for Tutorial"
+  },
+  "link.item.label.Blog": {
+    "message": "بلاگ",
+    "description": "Footer link label for Blog"
+  },
+  "link.item.label.GitHub": {
+    "message": "گٹ ہب",
+    "description": "Footer link label for GitHub"
+  },
+  "copyright": {
+    "message": "کاپی رائٹ © {year} فزیکل اے آئی اور ہیومنائیڈ روبوٹکس۔ ڈاکیوسورس اور کلاڈ کوڈ کے ساتھ بنایا گیا۔",
+    "description": "The footer copyright"
+  }
+}
