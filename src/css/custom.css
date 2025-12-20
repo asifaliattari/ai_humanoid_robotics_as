@@ -171,16 +171,51 @@ html[lang='ur'] {
   font-family: var(--urdu-font-family);
 }
 
+/* RTL Lists - Proper Urdu/Arabic list styling */
 [dir='rtl'] .markdown ul,
 [dir='rtl'] .markdown ol {
-  padding-right: 2rem;
-  padding-left: 0;
+  padding-right: 0;
+  padding-left: 2rem;  /* Bullets appear on the left in RTL */
+  margin-right: 1rem;
+  margin-left: 0;
   direction: rtl;
+  list-style-position: inside;  /* Ensure bullets are inside */
 }
 
-/* RTL Lists */
-[dir='rtl'] .markdown li::marker {
-  margin-right: 0.5rem;
+/* RTL List Items - Bullets at the beginning */
+[dir='rtl'] .markdown li {
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 0.75rem;
+  list-style-position: inside;
+  padding-right: 0.5rem;
+  padding-left: 0;
+}
+
+/* RTL List Item Markers - Position bullets at start */
+[dir='rtl'] .markdown ul li::marker {
+  margin-left: 0.75rem;
+  margin-right: 0;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+[dir='rtl'] .markdown ol li::marker {
+  margin-left: 0.75rem;
+  margin-right: 0;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Ensure nested lists work properly in RTL */
+[dir='rtl'] .markdown ul ul,
+[dir='rtl'] .markdown ol ol,
+[dir='rtl'] .markdown ul ol,
+[dir='rtl'] .markdown ol ul {
+  padding-left: 1.5rem;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 1rem;
 }
 
 /* RTL Buttons */
@@ -358,4 +393,196 @@ body {
 [dir='rtl'] .navbar__logo,
 [dir='rtl'] svg:not(.rtl-flip) {
   transform: none;
+}
+
+/* ============================================
+   Urdu Design Styling (Dawat-e-Islami Style)
+   ============================================ */
+
+/* Paragraph spacing for Urdu text */
+[dir='rtl'] .markdown p {
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  text-align: right;
+  direction: rtl;
+  word-spacing: 0.1em;
+}
+
+/* Blockquote styling for Urdu */
+[dir='rtl'] .markdown blockquote {
+  border-right: 4px solid var(--ifm-color-primary);
+  border-left: none;
+  padding-right: 1.5rem;
+  padding-left: 0;
+  margin-right: 1rem;
+  margin-left: 0;
+  background-color: rgba(102, 126, 234, 0.05);
+  font-style: italic;
+  direction: rtl;
+}
+
+[dir='rtl'] .markdown blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+/* Table styling for Urdu */
+[dir='rtl'] .markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+[dir='rtl'] .markdown table th,
+[dir='rtl'] .markdown table td {
+  padding: 1rem;
+  border: 1px solid var(--ifm-table-border-color);
+  text-align: right;
+  direction: rtl;
+}
+
+[dir='rtl'] .markdown table th {
+  background-color: var(--ifm-color-primary-lighter);
+  color: white;
+  font-weight: 600;
+}
+
+[dir='rtl'] .markdown table tr:nth-child(even) {
+  background-color: rgba(102, 126, 234, 0.03);
+}
+
+/* Link styling for Urdu */
+[dir='rtl'] .markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ifm-color-primary);
+  transition: all 0.3s ease;
+}
+
+[dir='rtl'] .markdown a:hover {
+  background-color: rgba(102, 126, 234, 0.1);
+  padding: 0 0.2em;
+  border-radius: 2px;
+}
+
+/* Strong/Bold text styling for Urdu */
+[dir='rtl'] .markdown strong,
+[dir='rtl'] .markdown b {
+  font-weight: 600;
+  color: var(--ifm-color-primary-dark);
+}
+
+/* Horizontal rule styling */
+[dir='rtl'] .markdown hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to left, transparent, var(--ifm-color-primary), transparent);
+  margin: 2rem 0;
+}
+
+/* Code styling - Keep LTR but styled for Urdu page */
+[dir='rtl'] .markdown code {
+  direction: ltr;
+  text-align: left;
+  background-color: var(--ifm-code-background);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--ifm-code-color);
+}
+
+[dir='rtl'] .markdown pre {
+  direction: ltr;
+  text-align: left;
+  background-color: var(--ifm-code-background);
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+/* Heading spacing for Urdu */
+[dir='rtl'] .markdown h1,
+[dir='rtl'] .markdown h2,
+[dir='rtl'] .markdown h3,
+[dir='rtl'] .markdown h4,
+[dir='rtl'] .markdown h5,
+[dir='rtl'] .markdown h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: right;
+  direction: rtl;
+  border-bottom: 2px solid var(--ifm-color-primary-lightest);
+  padding-bottom: 0.5rem;
+}
+
+[dir='rtl'] .markdown h1 {
+  font-size: 2.2rem;
+  margin-top: 2rem;
+}
+
+[dir='rtl'] .markdown h2 {
+  font-size: 1.8rem;
+  margin-top: 1.8rem;
+  border-bottom: 3px solid var(--ifm-color-primary);
+}
+
+[dir='rtl'] .markdown h3 {
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--ifm-color-primary-light);
+}
+
+/* Admonitions (notes, tips, warnings) */
+[dir='rtl'] .alert {
+  direction: rtl;
+  text-align: right;
+  border-left: none;
+  border-right: 4px solid;
+}
+
+[dir='rtl'] .alert--info {
+  border-right-color: #0ea5e9;
+}
+
+[dir='rtl'] .alert--success {
+  border-right-color: #10b981;
+}
+
+[dir='rtl'] .alert--warning {
+  border-right-color: #f59e0b;
+}
+
+[dir='rtl'] .alert--danger {
+  border-right-color: #ef4444;
+}
+
+/* Image alignment for Urdu */
+[dir='rtl'] .markdown img {
+  margin: 1.5rem auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Definition list styling for Urdu */
+[dir='rtl'] .markdown dt {
+  font-weight: 600;
+  color: var(--ifm-color-primary-dark);
+  margin-top: 1rem;
+  text-align: right;
+}
+
+[dir='rtl'] .markdown dd {
+  margin-left: 0;
+  margin-right: 2rem;
+  text-align: right;
+  padding-right: 0;
+}
+
+/* Small text (footnotes, captions) */
+[dir='rtl'] .markdown small {
+  font-size: 0.9em;
+  color: var(--ifm-color-gray-600);
+  text-align: right;
 }
